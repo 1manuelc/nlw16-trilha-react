@@ -13,10 +13,7 @@ import { FormEvent, useState } from 'react';
 export function App() {
 	const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false);
 	const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);
-	const [emailsToInvite, setEmailsToInvite] = useState([
-		'manuel@carlos.com.br',
-		'john@acme.com',
-	]);
+	const [emailsToInvite, setEmailsToInvite] = useState<Array<string>>([]);
 
 	function addNewEmailToInvite(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
