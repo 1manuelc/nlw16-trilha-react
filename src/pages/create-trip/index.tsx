@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ConfirmTripModal from './confirm-trip-modal';
-import DestinationAndDateStep from './destination-and-date-step';
+import DestinationAndDateStep from './steps/destination-and-date-step';
 import InviteGuestsModal from './invite-guests-modal';
-import InviteGuestsStep from './invite-guests-step';
+import InviteGuestsStep from './steps/invite-guests-step';
 
 export function CreateTripPage() {
 	const [isGuestsInputOpen, setIsGuestsInputOpen] = useState<boolean>(false);

@@ -1,5 +1,7 @@
 import { X, User, Mail } from 'lucide-react';
 import { FormEvent } from 'react';
+import Button from '../../components/button';
+import BoxInput from '../../components/box-input';
 
 interface ConfirmTripModalProps {
 	closeConfirmTripModal: () => void;
@@ -37,32 +39,17 @@ const ConfirmTripModal: React.FC<ConfirmTripModalProps> = ({
 				</div>
 
 				<form onSubmit={createTrip} className='space-y-3'>
-					<div className='h-14 px-4 bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
+					<BoxInput type='text' name='name' placeholder='Seu nome completo'>
 						<User className='text-zinc-400 size-5' />
-						<input
-							type='text'
-							name='name'
-							placeholder='Seu nome completo'
-							className=' bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2 flex-1 outline-none'
-						/>
-					</div>
+					</BoxInput>
 
-					<div className='h-14 px-4 bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
+					<BoxInput type='email' name='email' placeholder='Seu e-mail pessoal'>
 						<Mail className='text-zinc-400 size-5' />
-						<input
-							type='email'
-							name='email'
-							placeholder='Seu e-mail pessoal'
-							className=' bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2 flex-1 outline-none'
-						/>
-					</div>
+					</BoxInput>
 
-					<button
-						type='submit'
-						className='bg-lime-300 text-lime-950 rounded-lg px-5 h-10 font-medium flex items-center gap-2 hover:bg-lime-400 w-full justify-center'
-					>
+					<Button type='submit' variant='primary' size='full'>
 						Confirmar criação da viagem
-					</button>
+					</Button>
 				</form>
 			</div>
 		</div>
