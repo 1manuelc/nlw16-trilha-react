@@ -1,4 +1,4 @@
-export interface Participant {
+export interface IParticipant {
 	id: string;
 	name: string | null;
 	email: string;
