@@ -4,14 +4,14 @@ import { ReactNode, useEffect, useState } from 'react';
 import GuestItem from '../guests/guest-item';
 import { useParams } from 'react-router-dom';
 import { api } from '../../../lib/axios';
-import { Participant } from '../../../interfaces/participant';
+import { IParticipant } from '../../../interfaces/participant';
 
 interface GuestsProps {
 	children?: ReactNode;
 }
 
 const Guests: React.FC<GuestsProps> = () => {
-	const [participants, setParticipants] = useState<Participant[]>([]);
+	const [participants, setParticipants] = useState<IParticipant[]>([]);
 	const { tripId } = useParams();
 
 	useEffect(() => {

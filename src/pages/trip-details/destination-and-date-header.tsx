@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { api } from '../../lib/axios';
 import { format } from 'date-fns';
-import { Trip } from '../../interfaces/trip';
+import { ITrip } from '../../interfaces/trip';
 
 const DestinationAndDateHeader: React.FC = () => {
-	const [trip, setTrip] = useState<Trip | undefined>();
+	const [trip, setTrip] = useState<ITrip | undefined>();
 	const { tripId } = useParams();
 
 	useEffect(() => {
