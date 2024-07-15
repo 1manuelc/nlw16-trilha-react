@@ -1,35 +1,38 @@
-import ActivityItem from './activity-item';
 import ActivityDay from './activity-day';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import ActivityItem from './activity-item';
+import { IActivities } from '../../../interfaces/activities';
 
-interface ActivitiesProps {}
+interface ActivitiesProps {
+	activities: IActivities[];
+}
 
-const Activities: React.FC<ActivitiesProps> = () => {
+const Activities: React.FC<ActivitiesProps> = ({ activities }) => {
 	return (
 		<div className='space-y-8'>
-			<ActivityDay dayNumber={17} dayOfWeek='Sábado'></ActivityDay>
-			<ActivityDay dayNumber={18} dayOfWeek='Domingo'>
-				<ActivityItem
-					title='Academia em grupo'
-					time='08:00h'
-					isDone={true}
-					key={1}
-				/>
-			</ActivityDay>
-
-			<ActivityDay dayNumber={19} dayOfWeek='Segunda'>
-				<ActivityItem
-					title='Ida para a piscina'
-					time='16:00h'
-					isDone={false}
-					key={2}
-				/>
-				<ActivityItem
-					title='Jantar em família'
-					time='20:00h'
-					isDone={false}
-					key={3}
-				/>
-			</ActivityDay>
+			{activities?.map((day) => {
+				return (
+					<ActivityDay
+						key={day.date}
+						dayNumber={Number(format(day.date, 'd'))}
+						dayOfWeek={format(day.date, 'EEEE', {
+							locale: ptBR,
+						})}
+					>
+						{day.activities.length
+							? day.activities.map((activity) => (
+									<ActivityItem
+										key={activity.id}
+										title={activity.title}
+										isDone={false}
+										time={`${format(activity.occurs_at, 'HH:mm')}h`}
+									/>
+							  ))
+							: undefined}
+					</ActivityDay>
+				);
+			})}
 		</div>
 	);
 };

@@ -7,7 +7,11 @@ interface ActivityItemProps {
 	isDone: boolean;
 }
 
-const ActivityItem: React.FC<ActivityItemProps> = ({ title, time, isDone = false }) => {
+const ActivityItem: React.FC<ActivityItemProps> = ({
+	title,
+	time,
+	isDone = false,
+}) => {
 	return (
 		<div className='px-4 py-2.5 bg-zinc-900 rounded-xl shadow-shape flex items-center gap-3'>
 			{isDone ? (
