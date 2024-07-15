@@ -7,11 +7,15 @@ import Modal from '../../components/modal';
 interface ConfirmTripModalProps {
 	closeConfirmTripModal: () => void;
 	createTrip: (event: FormEvent<HTMLFormElement>) => void;
+	setOwnerName: (name: string) => void;
+	setOwnerEmail: (email: string) => void;
 }
 
 const ConfirmTripModal: React.FC<ConfirmTripModalProps> = ({
 	closeConfirmTripModal,
 	createTrip,
+	setOwnerName,
+	setOwnerEmail,
 }) => {
 	return (
 		<Modal
@@ -33,11 +37,21 @@ const ConfirmTripModal: React.FC<ConfirmTripModalProps> = ({
 			closeModalFn={closeConfirmTripModal}
 		>
 			<form onSubmit={createTrip} className='space-y-3'>
-				<BoxInput type='text' name='name' placeholder='Seu nome completo'>
+				<BoxInput
+					type='text'
+					name='name'
+					placeholder='Seu nome completo'
+					onChange={(event) => setOwnerName(event.target.value)}
+				>
 					<User className='text-zinc-400 size-5' />
 				</BoxInput>
 
-				<BoxInput type='email' name='email' placeholder='Seu e-mail pessoal'>
+				<BoxInput
+					type='email'
+					name='email'
+					placeholder='Seu e-mail pessoal'
+					onChange={(event) => setOwnerEmail(event.target.value)}
+				>
 					<Mail className='text-zinc-400 size-5' />
 				</BoxInput>
 
