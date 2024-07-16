@@ -6,6 +6,7 @@ import InviteGuestsModal from './invite-guests-modal';
 import InviteGuestsStep from './steps/invite-guests-step';
 import { DateRange } from 'react-day-picker';
 import { api } from '../../lib/axios';
+import LoadingSpinner from '../../components/loading-spinner';
 
 export function CreateTripPage() {
 	const [isGuestsInputOpen, setIsGuestsInputOpen] = useState<boolean>(false);
@@ -20,6 +21,8 @@ export function CreateTripPage() {
 	const [eventStartAndEndDates, setEventStartAndEndDates] = useState<
 		DateRange | undefined
 	>();
+
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 
 	const navigate = useNavigate();
 
@@ -70,6 +73,7 @@ export function CreateTripPage() {
 	}
 
 	async function createTrip(event: FormEvent<HTMLFormElement>) {
+		setIsLoading(true);
 		event.preventDefault();
 
 		if (!destination) return;
@@ -86,8 +90,8 @@ export function CreateTripPage() {
 			owner_email: ownerEmail,
 		});
 
+		setIsLoading(false);
 		const { tripId } = response.data;
-
 		navigate(`/trips/${tripId}`);
 	}
 
@@ -151,6 +155,8 @@ export function CreateTripPage() {
 					setOwnerEmail={setOwnerEmail}
 				/>
 			)}
+
+			{isLoading && <LoadingSpinner />}
 		</div>
 	);
 }
