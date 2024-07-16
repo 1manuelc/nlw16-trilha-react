@@ -5,13 +5,13 @@ import ActivityItem from './activity-item';
 import { IActivities } from '../../../interfaces/activities';
 
 interface ActivitiesProps {
-	activities: IActivities[];
+	activitiesData: IActivities[];
 }
 
-const Activities: React.FC<ActivitiesProps> = ({ activities }) => {
+const Activities: React.FC<ActivitiesProps> = ({ activitiesData }) => {
 	return (
 		<div className='space-y-8'>
-			{activities?.map((day) => {
+			{activitiesData?.map((day) => {
 				return (
 					<ActivityDay
 						key={day.date}

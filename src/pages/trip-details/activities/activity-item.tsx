@@ -7,6 +7,8 @@ interface ActivityItemProps {
 	isDone: boolean;
 }
 
+// TODO: feature: isDone dynamic marking
+
 const ActivityItem: React.FC<ActivityItemProps> = ({
 	title,
 	time,
