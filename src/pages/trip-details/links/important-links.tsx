@@ -1,26 +1,34 @@
 import { Plus } from 'lucide-react';
 import Button from '../../../components/button';
 import LinkItem from './link-item';
+import { ILink } from '../../../interfaces/link';
 
-interface ImportantLinksProps {}
+interface ImportantLinksProps {
+	linksData: ILink[];
+	openCreateLinkModal: () => void;
+}
 
-const ImportantLinks: React.FC<ImportantLinksProps> = () => {
+const ImportantLinks: React.FC<ImportantLinksProps> = ({
+	linksData,
+	openCreateLinkModal,
+}) => {
 	return (
 		<div className='space-y-6'>
 			<h2 className='font-semibold text-xl'>Links importantes</h2>
 
 			<div className='space-y-5'>
-				<LinkItem
-					title='Reserva do AirBnb'
-					url='https://airbnb.com.br/rooms/1ndkjsankdsandni1u2390u3091u923u091u3ujidshudgaid7468173617jcsabi'
-				/>
-				<LinkItem
-					title='Playlist da Viagem'
-					url='https://spotify.com/1manuelc'
-				/>
+				{linksData.length > 0 ? (
+					linksData.map((link) => {
+						return <LinkItem key={link.id} title={link.title} url={link.url} />;
+					})
+				) : (
+					<p className='text-zinc-500 text-sm'>
+						Não há links para mostrar, que tal adicionar o primeiro?
+					</p>
+				)}
 			</div>
 
-			<Button variant='secondary' size='full'>
+			<Button onClick={openCreateLinkModal} variant='secondary' size='full'>
 				<Plus className='size-5' />
 				Cadastrar novo link
 			</Button>
