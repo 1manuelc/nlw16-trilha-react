@@ -1,12 +1,12 @@
 import { CircleCheck, CircleDashed } from 'lucide-react';
 
-interface GuestItemProps {
+interface ParticipantItemProps {
 	name: string;
 	email: string;
 	isConfirmed?: boolean;
 }
 
-const GuestItem: React.FC<GuestItemProps> = ({
+const ParticipantItem: React.FC<ParticipantItemProps> = ({
 	name,
 	email,
 	isConfirmed = false,
@@ -26,4 +26,4 @@ const GuestItem: React.FC<GuestItemProps> = ({
 	);
 };
 
-export default GuestItem;
+export default ParticipantItem;

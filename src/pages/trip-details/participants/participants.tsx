@@ -1,34 +1,24 @@
 import { UserCog } from 'lucide-react';
 import Button from '../../../components/button';
-import { ReactNode, useEffect, useState } from 'react';
-import GuestItem from '../guests/guest-item';
-import { useParams } from 'react-router-dom';
-import { api } from '../../../lib/axios';
+import { ReactNode } from 'react';
+import ParticipantItem from './participant-item';
 import { IParticipant } from '../../../interfaces/participant';
 
-interface GuestsProps {
+interface ParticipantsProps {
 	children?: ReactNode;
+	participantsData: IParticipant[];
 }
 
-const Guests: React.FC<GuestsProps> = () => {
-	const [participants, setParticipants] = useState<IParticipant[]>([]);
-	const { tripId } = useParams();
-
-	useEffect(() => {
-		api
-			.get(`/trips/${tripId}/participants`)
-			.then((response) => setParticipants(response?.data.participants));
-	}, [tripId]);
-
+const Participants: React.FC<ParticipantsProps> = ({ participantsData }) => {
 	return (
 		<div>
 			<div className='space-y-6'>
 				<h2 className='font-semibold text-xl'>Convidados</h2>
 
 				<div className='space-y-5'>
-					{participants.map((participant, index) => {
+					{participantsData.map((participant, index) => {
 						return (
-							<GuestItem
+							<ParticipantItem
 								key={participant.id}
 								name={participant.name || `Convidado ${index}`}
 								email={participant.email}
@@ -47,4 +37,4 @@ const Guests: React.FC<GuestsProps> = () => {
 	);
 };
 
-export default Guests;
+export default Participants;
