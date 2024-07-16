@@ -20,6 +20,7 @@ const Participants: React.FC<ParticipantsProps> = ({ participantsData }) => {
 						return (
 							<ParticipantItem
 								key={participant.id}
+								id={participant.id}
 								name={participant.name || `Convidado ${index}`}
 								email={participant.email}
 								isConfirmed={participant.is_confirmed}
