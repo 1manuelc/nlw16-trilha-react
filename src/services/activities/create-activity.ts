@@ -18,7 +18,7 @@ export async function createActivity({
 	const title = data.get('title')?.toString();
 	const occurs_at = data.get('occurs_at')?.toString();
 
-	api.post(`/trips/${tripId}/activities`, {
+	await api.post(`/trips/${tripId}/activities`, {
 		title,
 		occurs_at,
 	});

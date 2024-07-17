@@ -24,8 +24,9 @@ const Activities: React.FC<ActivitiesProps> = ({ activitiesData }) => {
 							? day.activities.map((activity) => (
 									<ActivityItem
 										key={activity.id}
+										activityId={activity.id}
 										title={activity.title}
-										isDone={false}
+										isDone={activity.is_done}
 										time={`${format(activity.occurs_at, 'HH:mm')}h`}
 									/>
 							  ))
